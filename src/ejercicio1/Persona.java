@@ -3,13 +3,13 @@ package ejercicio1;
 public class Persona {
 	private String nombre;
 	private String apellido;
-	private int dni;
+	private String dni;
 	
 	public Persona() {
 
 	}
 
-	public Persona(String nombre, String apellido, int dni) {
+	public Persona(String nombre, String apellido, String dni) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -32,11 +32,11 @@ public class Persona {
 		this.apellido = apellido;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 }

@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class Archivo {
 
@@ -94,7 +95,7 @@ public class Archivo {
 		try {
 			entrada = new FileReader(ruta);
 			BufferedReader miBuffer = new BufferedReader(entrada);
-			
+		
 		   String linea = "";
 			while (linea != null) {
 				System.out.println(linea);
@@ -108,6 +109,28 @@ public class Archivo {
 		}
 	}
 
+	public void cargaArchivoEnListado(LinkedList<String> listado) {
+		FileReader entrada;
+
+		try {
+			entrada = new FileReader(ruta);
+			BufferedReader miBuffer = new BufferedReader(entrada);
+
+		   String linea = "";
+			while (linea != null) {
+//				System.out.println(linea);
+				listado.add(linea);
+				linea = miBuffer.readLine();
+			}
+			miBuffer.close();
+			entrada.close();
+
+		} catch (IOException e) {
+			System.out.println("No se encontro el archivo");
+		}
+
+	}
+	
 	public String getRuta() {
 		return ruta;
 	}

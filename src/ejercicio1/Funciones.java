@@ -1,5 +1,7 @@
 package ejercicio1;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Funciones {
@@ -37,7 +39,11 @@ public class Funciones {
 					nuevaPersona.setDni(palabra);
 					if(nuevaPersona.getNombre()!=null) {
 						if(!nuevaPersona.getNombre().equals("")) {
-							listadoPersonas.add(new Persona(nuevaPersona.getNombre(),nuevaPersona.getApellido(),nuevaPersona.getDni()));
+							if(!verificarRepetido(nuevaPersona.getDni(), listadoPersonas)) {
+								listadoPersonas.add(new Persona(nuevaPersona.getNombre(),nuevaPersona.getApellido(),nuevaPersona.getDni()));
+							} else {
+								System.out.println("DNI REPETIDO: " + nuevaPersona.getDni());
+							}
 						}
 					}
 				}				
@@ -75,5 +81,25 @@ public class Funciones {
 		   }
 		   
 		   return auxContieneLetras;
+	}
+	
+	public static boolean verificarRepetido(String dni,LinkedList<Persona> listadoPersonas) {
+		//Boolean auxRepetido = false;
+		
+		for(Persona per: listadoPersonas) {
+			if(dni.equals(per.getDni())) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public void ordenaAlfabeticamente(LinkedList<Persona> listadoPersonas) {
+		Collections.sort(listadoPersonas, new Comparator<Persona>() {
+			   public int compare(Persona obj1, Persona obj2) {
+			      return obj1.getApellido().compareTo(obj2.getApellido());
+			   }
+			});
 	}
 }

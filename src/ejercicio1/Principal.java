@@ -18,9 +18,10 @@ public class Principal {
 		String opcion = "";
 		while(opcion !=  "0"){
 			 System.out.println("----------------------------");	
-			 System.out.println("1. Cargar archivo Personas.txt");
+			 System.out.println("1. Cargar archivo Personas.txt (filtrando repetidos y DNI invalidos)");
 			 System.out.println("2. Mostrar listadoPersonas");
-			 System.out.println("3. Guardar listadoPersonas en Resultado.txt");
+			 System.out.println("3. Ordenar alfabeticamente por apellido el listadoPersonas");
+			 System.out.println("4. Guardar listadoPersonas en Resultado.txt");
 			 System.out.println("----------------------------");	
 			 System.out.println("Ingrese la opcion: ");	
 		     opcion = in.nextLine();
@@ -54,6 +55,8 @@ public class Principal {
 					in.nextLine();
 					break;
 				case "3":
+					fun.ordenaAlfabeticamente(listadoPersonas);
+					System.out.println("Se organizo alfabeticamente!");
 					//ESCRITURA:
 //					archivo.escribe_lineas("\nUniversidad Tecnologica Nacional");
 				default:

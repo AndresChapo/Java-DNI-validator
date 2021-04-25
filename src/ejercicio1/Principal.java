@@ -57,8 +57,20 @@ public class Principal {
 				case "3":
 					fun.ordenaAlfabeticamente(listadoPersonas);
 					System.out.println("Se organizo alfabeticamente!");
+				case "4":
+					Archivo archivoSalida = new Archivo();
+					archivoSalida.setRuta("Resultado.txt");
+					archivoSalida.creaArchivo();
 					//ESCRITURA:
-//					archivo.escribe_lineas("\nUniversidad Tecnologica Nacional");
+					for(Persona per:listadoPersonas) {
+						System.out.println(per.getNombre() +"-"+ per.getApellido()+"-"+ per.getDni());
+						archivoSalida.escribe_lineas(per.getNombre() +"-"+ per.getApellido()+"-"+ per.getDni()+"\n");
+					}
+					System.out.println("---------");
+					System.out.println("Se creo exitosamente el archivo Resultado.txt");
+					System.out.println("PRESIONE CUALQUIER TECLA PARA CONTINUAR.");
+					in.nextLine();
+					break;
 				default:
 					System.out.println("Datos invalidos!");
 					break;

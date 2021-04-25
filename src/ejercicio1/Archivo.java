@@ -27,7 +27,7 @@ public class Archivo {
 	{
 		FileWriter escritura;
 		try {
-			escritura = new FileWriter(ruta, true);
+			escritura = new FileWriter(ruta, false);
 			escritura.write("");
 			escritura.close();
 			return true;

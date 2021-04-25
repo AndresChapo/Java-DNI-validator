@@ -76,8 +76,9 @@ public class Funciones {
 		   System.out.println("DNI: " +dni+"- Contiene letas: " + auxContieneLetras);
 		   
 		   if(auxContieneLetras == true) {
-			   //DniInvalido exc1 = new DniInvalido();
-			   throw new DniInvalido();
+			   DniInvalido exc1 = new DniInvalido();
+			   throw exc1;
+			   //throw new DniInvalido();
 		   }
 		   
 		   return auxContieneLetras;

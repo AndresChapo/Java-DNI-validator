@@ -31,14 +31,24 @@ public class Funciones {
 				palabra += l.charAt(x);
 				}
 			}
-
-			nuevaPersona.setDni(palabra);
-			if(nuevaPersona.getNombre()!=null) {
-				if(!nuevaPersona.getNombre().equals("")) {
-					listadoPersonas.add(new Persona(nuevaPersona.getNombre(),nuevaPersona.getApellido(),nuevaPersona.getDni()));
-				}
+			
+			try {
+				if(!verificarDniInvalido(palabra)) {
+					nuevaPersona.setDni(palabra);
+					if(nuevaPersona.getNombre()!=null) {
+						if(!nuevaPersona.getNombre().equals("")) {
+							listadoPersonas.add(new Persona(nuevaPersona.getNombre(),nuevaPersona.getApellido(),nuevaPersona.getDni()));
+						}
+					}
+				}				
+			}
+			catch(DniInvalido d)
+			{
+				System.out.println("El DNI es invalido.");
+				d.printStackTrace();
 			}
 			
+
 //			System.out.println(nuevaPersona.getNombre() +" "+ nuevaPersona.getApellido()+" "+ nuevaPersona.getDni());
 			count =0;
 			palabra ="";
@@ -46,5 +56,24 @@ public class Funciones {
 			nuevaPersona.setNombre("");
 			nuevaPersona.setDni("");
 		}
+	}
+	
+	public static boolean verificarDniInvalido (String dni) throws DniInvalido {
+		Boolean auxContieneLetras = false;
+		
+		   for(int i=0; i< dni.length() ; i++)
+		   {
+			   if (!Character.isDigit(dni.charAt(i))) {
+				   auxContieneLetras = true;
+	           }
+		   }
+		   System.out.println("DNI: " +dni+"- Contiene letas: " + auxContieneLetras);
+		   
+		   if(auxContieneLetras == true) {
+			   //DniInvalido exc1 = new DniInvalido();
+			   throw new DniInvalido();
+		   }
+		   
+		   return auxContieneLetras;
 	}
 }
